@@ -26,3 +26,17 @@
   }
 }
 </style>
+
+<script>
+import {mapActions} from "vuex"
+export default {
+  name: "Home",
+  methods: {
+    ...mapActions(["obtProductos"])
+  },
+  created(){
+    this.obtProductos()
+  }
+
+}
+</script>

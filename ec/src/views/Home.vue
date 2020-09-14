@@ -6,42 +6,40 @@
 
     <h1>Bienvenidos</h1>
     <h2>Nuestros Productos</h2>
-<!-- Inicio del Card -->
-<div class="container">
-  <div class="row">
-    <div clas="col-4">
-       <b-card
-    title="Card Title"
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 20rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </b-card-text>
-
-    <b-button href="#" variant="primary">Go somewhere</b-button>
-  </b-card>
+    <!-- Inicio del Card -->
+    <div class="container">
+      <div class="row">
+        <div clas="col-3" v-for="(producto,index) in productos" :key="index">
+          <b-card
+            :title="producto.strDrink"
+            :img-src="producto.strDrinkThumb"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 20rem;"
+            class="mb-2"
+          >
+            <b-button variant="outline-warning">Comprar</b-button>
+          </b-card>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<!-- Fin del Card -->
+    <!-- Fin del Card -->
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue"
+import Navbar from "@/components/Navbar.vue";
+import { mapActions, mapState } from "vuex";
 // @ is an alias to /src
 
-
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Navbar
-  }
-
-}
+    Navbar,
+  },
+  computed: {
+    ...mapState(["productos"]),
+  },
+};
 </script>
