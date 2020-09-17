@@ -9,7 +9,7 @@
     <!-- Inicio del Card -->
     <div class="container">
       <div class="row">
-        <div clas="col-3" v-for="(producto,index) in productos" :key="index">
+        <div clas="col-3" v-for="(producto, index) in productos" :key="index">
           <b-card
             :title="producto.strDrink"
             :img-src="producto.strDrinkThumb"
@@ -19,7 +19,12 @@
             style="max-width: 20rem;"
             class="mb-2"
           >
-            <b-button variant="outline-warning">Comprar</b-button>
+            <b-card-text>$ {{ precioBase}} CL.</b-card-text>
+
+            <b-button
+              variant="outline-warning"
+              @click="incorporar(producto.strDrink,producto.idDrink,precioBase,1)"
+            >Comprar</b-button>
           </b-card>
         </div>
       </div>
@@ -38,8 +43,25 @@ export default {
   components: {
     Navbar,
   },
+  data() {
+    return {
+      precioBase: "10.000",
+    };
+  },
+
   computed: {
     ...mapState(["productos"]),
+  },
+  methods: {
+    ...mapActions(["ingCarrito"]),
+    incorporar(nombre, id, precio, cantidad) {
+      this.ingCarrito({
+        nombre,
+        id,
+        precio,
+        cantidad,
+      });
+    },
   },
 };
 </script>

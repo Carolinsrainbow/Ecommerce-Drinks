@@ -22,7 +22,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="/about">Carrito</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -36,7 +36,10 @@
             aria-label="Search"
           />
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          <button class="btn btn-info">Carrito</button>
+
+          <b-link to="/about">
+            <button class="btn btn-info">Carrito</button>
+          </b-link>
         </form>
       </div>
     </nav>

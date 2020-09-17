@@ -1,5 +1,13 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <Resumen></Resumen>
   </div>
 </template>
+
+<script>
+import Resumen from "@/components/Resumen.vue";
+export default {
+  name: "Carrito",
+  components: { Resumen },
+};
+</script>
