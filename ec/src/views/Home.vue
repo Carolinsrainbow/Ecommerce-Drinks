@@ -20,10 +20,22 @@
             class="mb-2"
           >
             <b-card-text>$ {{ precioBase}} CL.</b-card-text>
-
+            <b-card-text>
+              <button
+                type="button"
+                @click="disminuir(producto.idDrink)"
+                class="btn btn-outline-info"
+              >-</button>
+              {{ producto.cantidad}}
+              <button
+                type="button"
+                @click="aumentar(producto.idDrink)"
+                class="btn btn-outline-info"
+              >+</button>
+            </b-card-text>
             <b-button
               variant="outline-warning"
-              @click="incorporar(producto.strDrink,producto.idDrink,precioBase,1)"
+              @click="incorporar(producto.strDrink,producto.idDrink,precioBase,producto.cantidad)"
             >Comprar</b-button>
           </b-card>
         </div>
@@ -35,7 +47,7 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 // @ is an alias to /src
 
 export default {
@@ -45,10 +57,9 @@ export default {
   },
   data() {
     return {
-      precioBase: "10.000",
+      precioBase: 10000,
     };
   },
-
   computed: {
     ...mapState(["productos"]),
   },
@@ -61,6 +72,13 @@ export default {
         precio,
         cantidad,
       });
+    },
+    ...mapMutations(["AUMENTAR","DISMINUIR"]),
+    aumentar(id) {
+      this.AUMENTAR(id);
+    },
+    disminuir(id) {
+      this.DISMINUIR(id)
     },
   },
 };
